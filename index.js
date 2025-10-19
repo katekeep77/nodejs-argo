@@ -1,3 +1,31 @@
+import fs from 'fs';
+import path from 'path';
+
+// 获取当前工作目录
+const cwd = process.cwd();
+console.log('Current working directory:', cwd);
+
+// 定义临时目录
+let tmpDir = path.join(cwd, 'tmp');
+
+// 检查是否可写，如果不可写就使用 /tmp/app_tmp
+try {
+  fs.mkdirSync(tmpDir, { recursive: true });
+  fs.accessSync(tmpDir, fs.constants.W_OK);
+  console.log(`Using temp directory: ${tmpDir}`);
+} catch (err) {
+  tmpDir = '/tmp/app_tmp';
+  fs.mkdirSync(tmpDir, { recursive: true });
+  console.log(`./tmp not writable. Using temp directory: ${tmpDir}`);
+}
+
+// 你的原始逻辑，使用 tmpDir 替代 './tmp'
+const filePath = path.join(tmpDir, 'test.txt');
+fs.writeFileSync(filePath, 'Hello world!');
+console.log(`File written to: ${filePath}`);
+
+
+
 const express = require("express");
 const app = express();
 const axios = require("axios");
