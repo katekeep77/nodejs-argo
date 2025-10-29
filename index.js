@@ -51,7 +51,7 @@ const ARGO_AUTH = process.env.ARGO_AUTH || 'eyJhIjoiZDA5NWU2NTA3M2NiZDQxZDdiMTAy
 const ARGO_PORT = process.env.ARGO_PORT || 38001;
 const CFIP = process.env.CFIP || 'cdns.doon.eu.org';
 const CFPORT = process.env.CFPORT || 443;
-const NAME = process.env.NAME || '251019';
+const NAME = process.env.NAME || 'week';
 
 // ---------- 确保 FILE_PATH 可写 ----------
 function getWritableDir(dir) {
